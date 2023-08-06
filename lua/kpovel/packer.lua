@@ -45,6 +45,7 @@ return require('packer').startup(function(use)
 				ts_update()
 			end,}
   use("nvim-treesitter/playground")
+  use("windwp/nvim-ts-autotag")
   use("theprimeagen/harpoon")
   use("theprimeagen/refactoring.nvim")
   use("sbdchd/neoformat")

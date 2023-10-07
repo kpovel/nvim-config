@@ -7,6 +7,11 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
+vim.api.nvim_exec([[
+    autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
+]], false)
+
+
 function R(name)
     require("plenary.reload").reload_module(name)
 end

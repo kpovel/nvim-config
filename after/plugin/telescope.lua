@@ -7,4 +7,5 @@ end)
 vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 vim.keymap.set('n', 'td', builtin.lsp_type_definitions, {})
+vim.keymap.set('n', '<leader>wd', builtin.diagnostics, {})
 

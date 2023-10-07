@@ -45,21 +45,19 @@ return require('packer').startup(function(use)
 				ts_update()
 			end,}
   use("nvim-treesitter/playground")
-  use("windwp/nvim-ts-autotag")
   use("theprimeagen/harpoon")
   use("theprimeagen/refactoring.nvim")
   use("sbdchd/neoformat")
   use("mbbill/undotree")
-  use("chrisbra/changesPlugin")
   use("sindrets/diffview.nvim")
   use("tpope/vim-fugitive")
   use("lewis6991/gitsigns.nvim")
-  use("nvim-treesitter/nvim-treesitter-context");
+  -- use("nvim-treesitter/nvim-treesitter-context");
   use("ThePrimeagen/vim-be-good")
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v2.x',
+	  branch = 'v3.x',
 	  requires = {
 		  -- LSP Support
 		  {'neovim/nvim-lspconfig'},

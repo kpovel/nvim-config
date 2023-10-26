@@ -9,7 +9,9 @@ require('mason-lspconfig').setup({
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
+      local lspconfig = require('lspconfig');
+      lspconfig.lua_ls.setup(lua_opts)
+      lspconfig.htmx.setup{}
     end,
   }
 })
@@ -69,6 +71,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp.setup()

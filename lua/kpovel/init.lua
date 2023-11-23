@@ -11,6 +11,8 @@ vim.api.nvim_exec([[
     autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
 ]], false)
 
+vim.cmd([[autocmd BufEnter * set formatoptions-=o]])
+
 
 function R(name)
     require("plenary.reload").reload_module(name)

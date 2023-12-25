@@ -1,7 +1,3 @@
-require('rose-pine').setup({
-  disable_background = true
-})
-
 require('tokyonight').setup({
   style = "moon",
   transparent = true,
@@ -9,12 +5,7 @@ require('tokyonight').setup({
   italic_comments = true,
 })
 
-function ColorMyPencils(color)
-  color = color or "rose-pine"
-  vim.cmd.colorscheme(color)
+vim.cmd.colorscheme('tokyonight')
 
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
-ColorMyPencils('tokyonight')
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

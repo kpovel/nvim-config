@@ -48,16 +48,6 @@ cmp.setup({
   })
 })
 
-lsp.set_preferences({
-  suggest_lsp_servers = false,
-  sign_icons = {
-    error = "E",
-    warn = "W",
-    hint = "H",
-    info = "I"
-  }
-})
-
 local builtin = require("telescope.builtin")
 lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }

@@ -46,7 +46,6 @@ return require("packer").startup(function(use)
 
   use("sbdchd/neoformat")
   use("mbbill/undotree")
-  use("tpope/vim-fugitive")
   use("lewis6991/gitsigns.nvim")
 
   use {
@@ -70,9 +69,7 @@ return require("packer").startup(function(use)
     }
   }
 
-  use("folke/zen-mode.nvim")
   use("github/copilot.vim")
-
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 end)

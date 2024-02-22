@@ -35,6 +35,11 @@ return require("packer").startup(function(use)
       local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
       ts_update()
     end, }
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
   use("theprimeagen/vim-apm");

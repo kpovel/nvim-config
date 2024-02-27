@@ -16,6 +16,7 @@ require("mason-lspconfig").setup({
   }
 })
 
+vim.filetype.add({ extension = { templ = "templ" } })
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()

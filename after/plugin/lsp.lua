@@ -1,6 +1,7 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
+require'lspconfig'.ocamllsp.setup{}
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -41,7 +42,7 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
     ["<C-f>"] = cmp_action.luasnip_jump_forward(),

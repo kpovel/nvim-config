@@ -38,7 +38,6 @@ return require("packer").startup(function(use)
 
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
-  use("theprimeagen/vim-apm");
 
   use("sbdchd/neoformat")
   use("mbbill/undotree")

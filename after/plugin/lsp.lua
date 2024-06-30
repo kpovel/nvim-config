@@ -5,19 +5,16 @@ require'lspconfig'.ocamllsp.setup{}
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = { "tsserver", "rust_analyzer" },
+  ensure_installed = {},
   handlers = {
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
       local lspconfig = require("lspconfig");
       lspconfig.lua_ls.setup(lua_opts)
-      lspconfig.htmx.setup {}
     end,
   }
 })
-
-vim.filetype.add({ extension = { templ = "templ" } })
 
 local cmp = require("cmp")
 local cmp_action = require("lsp-zero").cmp_action()

@@ -7,9 +7,9 @@ local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     autocmd BufRead,BufNewFile * setlocal spell spelllang=en_us
-]], false)
+]], {})
 
 vim.cmd([[autocmd BufEnter * set formatoptions-=o]])
 

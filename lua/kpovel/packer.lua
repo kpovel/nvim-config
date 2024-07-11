@@ -27,7 +27,6 @@ return require("packer").startup(function(use)
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
 
-  use("sbdchd/neoformat")
   use("mbbill/undotree")
   use("lewis6991/gitsigns.nvim")
 

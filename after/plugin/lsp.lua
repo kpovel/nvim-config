@@ -1,7 +1,26 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
-require'lspconfig'.ocamllsp.setup{}
+require 'lspconfig'.ocamllsp.setup {}
+
+require "lspconfig".nextls.setup({
+  cmd = { "nextls", "--stdio" },
+  init_options = {
+    extensions = {
+      credo = { enable = true }
+    },
+    experimental = {
+      completions = { enable = true }
+    }
+  }
+})
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+require 'lspconfig'.html.setup {
+  capabilities = capabilities,
+  filetypes = { "html", "templ", "heex" }
+}
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
@@ -24,8 +43,6 @@ lsp.defaults.cmp_mappings({
   ["<S-Tab>"] = nil,
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 cmp.setup({
   preselect = cmp.PreselectMode.None,
   completion = {
@@ -33,13 +50,11 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
-    { name = "luasnip" },
   },
   mapping = cmp.mapping.preset.insert({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-    -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
     ["<C-f>"] = cmp_action.luasnip_jump_forward(),

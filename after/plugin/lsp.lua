@@ -15,6 +15,27 @@ require "lspconfig".nextls.setup({
   }
 })
 
+require "lspconfig".tailwindcss.setup {
+  init_options = {
+    userLanguages = {
+      elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
+    },
+  },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          [[class= "([^"]*)]],
+          [[class: "([^"]*)]],
+          '~H""".*class="([^"]*)".*"""',
+        },
+      },
+    },
+  },
+}
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 require 'lspconfig'.html.setup {

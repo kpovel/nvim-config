@@ -1,9 +1,11 @@
 local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
-require 'lspconfig'.ocamllsp.setup {}
+local lspconfig = require 'lspconfig'
 
-require "lspconfig".nextls.setup({
+lspconfig.ocamllsp.setup {}
+
+lspconfig.nextls.setup({
   cmd = { "nextls", "--stdio" },
   init_options = {
     extensions = {
@@ -15,7 +17,7 @@ require "lspconfig".nextls.setup({
   }
 })
 
-require "lspconfig".tailwindcss.setup {
+lspconfig.tailwindcss.setup {
   init_options = {
     userLanguages = {
       elixir = "html-eex",
@@ -34,11 +36,25 @@ require "lspconfig".tailwindcss.setup {
       },
     },
   },
+  root_dir = lspconfig.util.root_pattern(
+    'tailwind.config.js',
+    'assets/tailwind.config.js',
+    'tailwind.config.cjs',
+    'tailwind.config.mjs',
+    'tailwind.config.ts',
+    'postcss.config.js',
+    'postcss.config.cjs',
+    'postcss.config.mjs',
+    'postcss.config.ts',
+    'package.json',
+    'node_modules',
+    '.git'
+  )
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require 'lspconfig'.html.setup {
+lspconfig.html.setup {
   capabilities = capabilities,
   filetypes = { "html", "templ", "heex" }
 }
@@ -50,7 +66,6 @@ require("mason-lspconfig").setup({
     lsp.default_setup,
     lua_ls = function()
       local lua_opts = lsp.nvim_lua_ls()
-      local lspconfig = require("lspconfig");
       lspconfig.lua_ls.setup(lua_opts)
     end,
   }

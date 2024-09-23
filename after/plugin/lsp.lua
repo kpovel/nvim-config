@@ -5,18 +5,6 @@ local lspconfig = require 'lspconfig'
 
 lspconfig.ocamllsp.setup {}
 
-lspconfig.nextls.setup({
-  cmd = { "nextls", "--stdio" },
-  init_options = {
-    extensions = {
-      credo = { enable = true }
-    },
-    experimental = {
-      completions = { enable = true }
-    }
-  }
-})
-
 lspconfig.tailwindcss.setup {
   init_options = {
     userLanguages = {
@@ -72,8 +60,8 @@ require("mason-lspconfig").setup({
 })
 
 local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local cmp_action = lsp.cmp_action()
 lsp.defaults.cmp_mappings({
   ["<Tab>"] = nil,
   ["<S-Tab>"] = nil,

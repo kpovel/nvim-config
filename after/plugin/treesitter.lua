@@ -1,5 +1,5 @@
-require('nvim-treesitter.configs').setup({
-  ensure_installed = { },
+require("nvim-treesitter.configs").setup({
+  ensure_installed = {"eex", "elixir", "erlang", "heex", "html", "surface", "diff"},
   sync_install = false,
   auto_install = true,
 

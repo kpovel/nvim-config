@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
             vim.keymap.set("i", "<C-Space>", vim.lsp.completion.get, opts)
             vim.keymap.set({"i", "n"}, "<C-h>", vim.lsp.buf.signature_help, opts)
+            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
         end
 
     end,

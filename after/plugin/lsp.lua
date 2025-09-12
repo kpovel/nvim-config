@@ -11,11 +11,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set({"i", "n"}, "<C-h>", vim.lsp.buf.signature_help, opts)
             vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
         end
-
     end,
 })
 
-vim.cmd("set completeopt+=noselect")
+vim.opt.completeopt = "menu,menuone,popup,noinsert,fuzzy"
 
 vim.diagnostic.config({
   virtual_text = true

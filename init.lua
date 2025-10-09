@@ -1,4 +1,4 @@
-require("plugins")
+require("pack")
 require("remap")
 require("set")
 require("format")

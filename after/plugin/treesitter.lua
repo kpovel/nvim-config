@@ -1,19 +1,19 @@
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {"eex", "elixir", "erlang", "heex", "html", "surface", "diff"},
-  sync_install = false,
-  auto_install = true,
+require("nvim-treesitter").setup({
+  install_dir = vim.fn.stdpath("data") .. "/site",
+})
 
-  highlight = {
-    enable = true,
+require("nvim-treesitter").install({"eex", "elixir", "erlang", "heex", "html", "surface", "diff"})
 
-    disable = function(lang, buf)
-      local max_filesize = 200 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-      if ok and stats and stats.size > max_filesize then
-        -- return true
-      end
-    end,
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function(ev)
+    local max_filesize = 200 * 1024
+    local size = vim.api.nvim_buf_get_offset(ev.buf, vim.api.nvim_buf_line_count(ev.buf))
+    if size > max_filesize then
+      vim.treesitter.stop(ev.buf)
+      return
+    end
 
-    additional_vim_regex_highlighting = false,
-  }
+    pcall(vim.treesitter.start, ev.buf)
+  end,
 })

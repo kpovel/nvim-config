@@ -22,5 +22,14 @@ autocmd("TextYankPost", {
 autocmd({"BufWritePre"}, {
     group =  augroup("TheGroup", {}),
     pattern = "*",
-    command = [[%s/\s\+$//e]],
+    callback = function(ev)
+        local filetype = vim.bo[ev.buf].filetype
+        if vim.bo[ev.buf].buftype ~= "" or filetype == "markdown" or filetype == "diff" then
+            return
+        end
+
+        local view = vim.fn.winsaveview()
+        vim.cmd([[keeppatterns %s/\s\+$//e]])
+        vim.fn.winrestview(view)
+    end,
 })
